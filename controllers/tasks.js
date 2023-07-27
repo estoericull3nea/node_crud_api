@@ -4,7 +4,7 @@ const getAllTasks = async (req, res) => {
   // getting all tasks method
   try {
     const tasks = await TasksModel.find({})
-    res.status(200).json(tasks)
+    res.status(200).json({ tasks })
   } catch (error) {
     res.status(500).json({ msg: error.message })
   }
