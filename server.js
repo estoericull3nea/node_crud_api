@@ -1,16 +1,16 @@
-require('dotenv').config()
+require('dotenv').config() // for accessing env variables
 
-const express = require('express')
-const PORT = process.env.PORT || 3000
+const express = require('express') // main express
+const PORT = process.env.PORT || 3000 // port
 
-const app = express()
+const app = express() // requiring app
 
 // middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 // routes
-app.use('/api/v1/tasks', require('./routes/tasks'))
+app.use('/api/v1/players', require('./routes/player_route'))
 
 // middleware for error handler
 app.use(require('./middlewares/not_found'))
