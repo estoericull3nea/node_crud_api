@@ -2,20 +2,16 @@ const TasksModel = require('../models/Task') // taskmodel
 const async_wrapper = require('../middlewares/async')
 
 const getAllTasks = async_wrapper(async (req, res) => {
-  // getting all tasks method
   const tasks = await TasksModel.find({})
   res.status(200).json({ tasks })
 })
 
 const createTask = async_wrapper(async (req, res) => {
-  // creating task method
   await TasksModel.create(req.body)
   res.json({ msg: 'Task Added!' })
 })
 
 const getOneTask = async_wrapper(async (req, res) => {
-  // getting one task by id
-  // const id = req.params.id
   const { id: taskId } = req.params
   const task = await TasksModel.findOne({ _id: taskId })
   if (!task) {
@@ -25,7 +21,6 @@ const getOneTask = async_wrapper(async (req, res) => {
 })
 
 const updateOneTask = async_wrapper(async (req, res) => {
-  // update one task by id
   const { id: taskId } = req.params
   const task = await TasksModel.findOneAndUpdate({ _id: taskId }, req.body, {
     new: true,
@@ -38,7 +33,6 @@ const updateOneTask = async_wrapper(async (req, res) => {
 })
 
 const deleteOneTask = async_wrapper(async (req, res) => {
-  // deleting task by id
   const { id: taskId } = req.params
   const task = await TasksModel.findByIdAndDelete({ _id: taskId })
   if (!task) {

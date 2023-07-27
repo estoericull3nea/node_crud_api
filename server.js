@@ -12,8 +12,9 @@ app.use(express.urlencoded({ extended: false }))
 // routes
 app.use('/api/v1/tasks', require('./routes/tasks'))
 
-// middleware if url not exist
+// middleware for error handler
 app.use(require('./middlewares/not_found'))
+app.use(require('./middlewares/error_handler'))
 
 // server config, first load the db then server
 const start = async () => {
