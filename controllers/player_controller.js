@@ -10,7 +10,7 @@ const viewAllPlayers = async_wrapper(async (req, res) => {
 
 const createPlayer = async_wrapper(async (req, res) => {
   await PlayerModel.create(req.body)
-  res.json({ msg: `${req.body.firstname} added!` })
+  res.status(201).json({ msg: `${req.body.firstname} added!` })
 })
 
 const viewPlayer = async_wrapper(async (req, res, next) => {
